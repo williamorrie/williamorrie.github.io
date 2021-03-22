@@ -15,20 +15,27 @@
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNrbWtqejBvMjExcjMydnMxN2FxeGNlangifQ.djnVsATPfQl_oyRFml-uWw';
-var map = L.mapbox.map('map')
-    .setView([54.6, -6.66], 9)
-    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10'));
-map.on('load', function() {
 
+  
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v10',
+  center: [54.6, -6.66],
+  zoom: 9
+});
+  
+map.on('load', function() {
   map.addSource('RTC', {
     type: 'geojson',
-    data: './RTC_geo.json'})
-})
+    data: './RTC_geo.json'
+  })
+});
   
 map.addLayer({
   id: 'RTC-heat',
   type: 'heatmap',
-  source: 'RTC'})
+  source: 'RTC'
+}):
 
 </script>
 </body>
