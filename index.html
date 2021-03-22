@@ -18,6 +18,18 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNrbWtqejBvMjExcjMydnMxN2Fxe
 var map = L.mapbox.map('map')
     .setView([54.6, -6.66], 9)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10'));
+map.on('load', function() {
+
+  map.addSource('RTC', {
+    type: 'geojson',
+    data: './RTC_geo.son'})
+})
+  
+map.addLayer({
+  id: 'RTC-heat',
+  type: 'heatmap',
+  source: 'RTC'})
+
 </script>
 </body>
 </html>
