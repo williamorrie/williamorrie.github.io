@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>A simple map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+<script>
+  
+var map = new mapboxgl.Map({
+  accessToken: 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNrbWtqejBvMjExcjMydnMxN2FxeGNlangifQ.djnVsATPfQl_oyRFml-uWw',
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v10',
+  center: [54.6, -6.66],
+  zoom: 9
+});
+  
+map.on('load', function() {
+  map.addSource('RTC', {
+    type: 'geojson',
+    data: './RTC_geo.json'
+  })
+});
+  
+map.addLayer({
+  id: 'RTC-heat',
+  type: 'heatmap',
+  source: 'RTC'
+});
+
+</script>
+</body>
+</html>
