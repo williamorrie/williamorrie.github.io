@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Mapping PSNI RTC Data from OpenDataNI"
+---
+
 ### Process 
 1. Use Google colab (ipython juypter notebook) to extract data from opendatni website
 2. Merge separate CSV files to single data source
