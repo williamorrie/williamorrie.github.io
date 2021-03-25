@@ -4,9 +4,7 @@ title: "Mapping PSNI RTC Data from OpenDataNI"
 ---
 
 ### Idea
-Create a heatmap from PSNI RTC data using free online tools.
-
-link]("https://williamorrie.github.io/rtc_hestmap.html"){:target="_blank}
+Create a [heatmap]("https://williamorrie.github.io/rtc_hestmap.html"){:target="_blank} from [PSNI RTC data](https://www.opendatani.gov.uk/dataset?tags=PSNI){:target="_blank} using free online tools.
 
 ### Process 
 1. Use Google colab (ipython juypter notebook) to extract data from opendatni website
