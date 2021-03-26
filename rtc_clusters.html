@@ -15,14 +15,14 @@ body { margin: 0; padding: 0; }
 <div id="map"></div>
  
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNqdmZiMXFkbzBsMXk0M3BodmlwZmQ0OXUifQ.nNRaENyQzbVpUzQ-jqa15Q';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/dark-v10',
-center: [-103.59179687498357, 40.66995747013945],
-zoom: 3
-});
- 
+  mapboxgl.accessToken = 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNqdmZiMXFkbzBsMXk0M3BodmlwZmQ0OXUifQ.nNRaENyQzbVpUzQ-jqa15Q';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10',
+    center: [-103.59179687498357, 40.66995747013945],
+    zoom: 3
+  });
+```javascript 
 map.on('load', function () {
 // Add a new source from our GeoJSON data and
 // set the 'cluster' option to true. GL-JS will
@@ -151,6 +151,7 @@ map.on('mouseleave', 'clusters', function () {
 map.getCanvas().style.cursor = '';
 });
 });
+```
 </script>
  
 </body>
