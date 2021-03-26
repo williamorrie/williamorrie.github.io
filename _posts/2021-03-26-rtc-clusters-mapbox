@@ -1,0 +1,20 @@
+---
+layout: post
+title: "Visualising clusters of Northern Irelan Road Traffic Collisions (RTC's)"
+---
+
+### Idea
+Using the open data that was collected for RTC Heatmap, create a cluster analysis in mapbox.
+
+### Process 
+1. Create a new branch on github
+2. Create a new HTML page in new branch
+3. Add mapbox boilerplate code for Heatmap
+4. Update the data source to point to my RTC layer in mapbox
+
+### Problems
+1. Unable to test on mobile / GitHub.com as commits to new branch are not automatically published.
+2. Original Heatmap layere were created in mapbox studio and published from there as a style, how do I reference the data iny new map?
+### Solutions
+
+### Results
