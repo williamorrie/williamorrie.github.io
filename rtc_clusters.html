@@ -1,4 +1,21 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create and style clusters</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+ 
+<script>
+  
 	mapboxgl.accessToken = 'pk.eyJ1Ijoib3Jyd2lsIiwiYSI6ImNqdmZiMXFkbzBsMXk0M3BodmlwZmQ0OXUifQ.nNRaENyQzbVpUzQ-jqa15Q';
     var map = new mapboxgl.Map({
         container: 'map',
@@ -104,9 +121,8 @@
         // description HTML from its properties.
         map.on('click', 'unclustered-point', function (e) {
             var coordinates = e.features[0].geometry.coordinates.slice();
-            var year = e.features[0].properties.a_year.toString(10);
-	          var month = e.features[0].properties.a_month.toString(10);
-	          var day = e.features[0].properties.a_day.toString(10);
+            var mag = e.features[0].properties.mag;
+            var tsunami;
 
             if (e.features[0].properties.tsunami === 1) {
                 tsunami = 'yes';
@@ -124,7 +140,7 @@
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML(
-                    'Date: ' + year + '-' + month + '-' + day
+                    'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
                 )
                 .addTo(map);
         });
@@ -136,3 +152,8 @@
             map.getCanvas().style.cursor = '';
         });
     });
+
+</script>
+ 
+</body>
+</html>
