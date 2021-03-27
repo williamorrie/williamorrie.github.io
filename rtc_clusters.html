@@ -121,8 +121,9 @@ body { margin: 0; padding: 0; }
         // description HTML from its properties.
         map.on('click', 'unclustered-point', function (e) {
             var coordinates = e.features[0].geometry.coordinates.slice();
-            var mag = e.features[0].properties.mag;
-            var tsunami;
+            var year = e.features[0].properties.a_year.toString(10);
+	          var month = e.features[0].properties.a_month.toString(10);
+	          var day = e.features[0].properties.a_day.toString(10);
 
             if (e.features[0].properties.tsunami === 1) {
                 tsunami = 'yes';
@@ -140,7 +141,7 @@ body { margin: 0; padding: 0; }
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML(
-                    'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
+                    'Date: ' + year + '-' + month + '-' + day
                 )
                 .addTo(map);
         });
@@ -152,6 +153,7 @@ body { margin: 0; padding: 0; }
             map.getCanvas().style.cursor = '';
         });
     });
+
 
 </script>
  
