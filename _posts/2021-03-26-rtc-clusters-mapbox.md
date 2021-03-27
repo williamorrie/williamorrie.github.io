@@ -18,12 +18,15 @@ Using the open data that was collected for [RTC heat map](https://williamorrie.g
 2. Original Heatmap layere were created in mapbox studio and published from there as a style, how do I reference the data in new map?
 3. New post didn't appear on home page
 4. Editing javascript in github web browser prone to errors
+5. Wrecked cluster map by pasting script from codepen over entire page
 
 ### Solutions
 1. Found this [article](https://automationpanda.com/2021/03/24/testing-github-pages-without-local-jekyll-setup/){:target="_blank} while researching something else. Repo Home Page > Settings > Options > Source
 2. Was able to pull the data directly from github, when previously attempted this method recieved CORS errors.
 3. New page did not have .md extension
 4. Using [codepen.io](https://codepen.io/){:target="_blank"} to edit mapbox javascript
+5. Reverted GitHub commit from command line (no way to do this from browser)
 
 ### Results
 1. Basic [RTC cluster map](https://williamorrie.github.io/rtc_heatmap.html){:target="_blank"} created
+2. Able to make changes to website from mobile
