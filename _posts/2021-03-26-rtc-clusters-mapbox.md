@@ -4,7 +4,7 @@ title: "Visualising clusters of Northern Ireland Road Traffic Collisions (RTC's)
 ---
 
 ### Idea
-Using the open data that was collected for [RTC heat map](https://williamorrie.github.io/rtc_heatmap.html){:target="_blank"}, create an [RTC cluster map](https://williamorrie.github.io/rtc_heatmap.html){:target="_blank"} with mapbox.
+Using the open data that was collected for [RTC heat map](https://williamorrie.github.io/rtc_heatmap.html){:target="_blank"}, create an [RTC cluster map](https://williamorrie.github.io/rtc_clusters.html){:target="_blank"} with mapbox.
 
 ### Process 
 1. Create a new branch on github
