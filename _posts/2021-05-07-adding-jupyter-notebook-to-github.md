@@ -15,6 +15,7 @@ This [post](http://www.kasimte.com/adding-and-including-jupyter-notebooks-as-jek
 
 ### Resolutions
 1. [GitHub Docs](https://docs.github.com/en/github/managing-files-in-a-repository/moving-a-file-to-a-new-location) shows how easy it is to move files between folders. 
+
 ![](https://docs.github.com/assets/images/help/repository/moving_files.gif)
 
 ### Results
