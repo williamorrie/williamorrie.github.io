@@ -12,4 +12,4 @@ Retrospectively document my first visualisation on [Tableau Public](https://publ
 
 ### Result
 Tableau Public [visualisation that looks like a packet of plastisine](https://public.tableau.com/profile/william.orr#!/vizhome/CovidPrescriptions/Sheet2)
-![](./Tableau_Plasticine.png)
+![](https://williamorrie.github.io/Tableau_Plasticine.png)
