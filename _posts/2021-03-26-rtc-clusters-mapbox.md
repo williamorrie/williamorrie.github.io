@@ -28,5 +28,5 @@ Using the open data that was collected for [RTC heat map](https://williamorrie.g
 5. Reverted GitHub commit from command line (no way to do this from browser)
 
 ### Results
-1. Basic [RTC cluster map](https://williamorrie.github.io/rtc_heatmap.html){:target="_blank"} created
+1. Basic [RTC cluster map](https://williamorrie.github.io/rtc_clusters.html){:target="_blank"} created
 2. Able to make changes to website from mobile
