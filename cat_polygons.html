@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fa71d7e34e87c51d2691032353792013 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    
+    <div id='maplegend tag-local-identifier' class='maplegend'>
+        <div class='legend-title'>tag-local-identifier</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#e41a1c'></span>Abba-Tag</li>
+                <li><span style='background:#e41a1c'></span>Alfie-Tag</li>
+                <li><span style='background:#e41a1c'></span>Amber-Tag</li>
+                <li><span style='background:#e41a1c'></span>Ares</li>
+                <li><span style='background:#e41a1c'></span>Athena</li>
+                <li><span style='background:#e41a1c'></span>Balu-Tag</li>
+                <li><span style='background:#e41a1c'></span>Barney-Tag</li>
+                <li><span style='background:#e41a1c'></span>Beanie-Tag</li>
+                <li><span style='background:#e41a1c'></span>Bear-Tag</li>
+                <li><span style='background:#e41a1c'></span>Bella-Tag</li>
+                <li><span style='background:#e41a1c'></span>Binky-Tag</li>
+                <li><span style='background:#e41a1c'></span>Bits-Tag</li>
+                <li><span style='background:#377eb8'></span>Bobs-Tag</li>
+                <li><span style='background:#377eb8'></span>Boots-Tag</li>
+                <li><span style='background:#377eb8'></span>Bumbles-Tag</li>
+                <li><span style='background:#377eb8'></span>CJ-Tag</li>
+                <li><span style='background:#377eb8'></span>Carbonel-Tag</li>
+                <li><span style='background:#377eb8'></span>Carrots-Tag</li>
+                <li><span style='background:#377eb8'></span>Casper-Tag</li>
+                <li><span style='background:#377eb8'></span>Charlie</li>
+                <li><span style='background:#377eb8'></span>Charlie2-Tag</li>
+                <li><span style='background:#377eb8'></span>Charlie3-Tag</li>
+                <li><span style='background:#377eb8'></span>Chloe-Tag</li>
+                <li><span style='background:#4daf4a'></span>Coco</li>
+                <li><span style='background:#4daf4a'></span>Dexter-Tag</li>
+                <li><span style='background:#4daf4a'></span>Dexter2-Tag</li>
+                <li><span style='background:#4daf4a'></span>Dory-Tag</li>
+                <li><span style='background:#4daf4a'></span>Ebby-Tag</li>
+                <li><span style='background:#4daf4a'></span>Ernie-Tag</li>
+                <li><span style='background:#4daf4a'></span>Fairclough-Tag</li>
+                <li><span style='background:#4daf4a'></span>Felix-Tag</li>
+                <li><span style='background:#4daf4a'></span>Flash-Tag</li>
+                <li><span style='background:#4daf4a'></span>Fonzie-Tag</li>
+                <li><span style='background:#4daf4a'></span>Frank-Tag</li>
+                <li><span style='background:#984ea3'></span>Frank_2-Tag</li>
+                <li><span style='background:#984ea3'></span>Freya-Tag</li>
+                <li><span style='background:#984ea3'></span>Friday</li>
+                <li><span style='background:#984ea3'></span>Ginge-Tag</li>
+                <li><span style='background:#984ea3'></span>Gracie-Tag</li>
+                <li><span style='background:#984ea3'></span>Gracie_2-Tag</li>
+                <li><span style='background:#984ea3'></span>Guinness-Tag</li>
+                <li><span style='background:#984ea3'></span>Henry-Tag</li>
+                <li><span style='background:#984ea3'></span>Indie-Tag</li>
+                <li><span style='background:#984ea3'></span>Jago</li>
+                <li><span style='background:#984ea3'></span>Jago2-Tag</li>
+                <li><span style='background:#ff7f00'></span>Jasper-Tag</li>
+                <li><span style='background:#ff7f00'></span>Jessie-Tag</li>
+                <li><span style='background:#ff7f00'></span>Jessy-Tag</li>
+                <li><span style='background:#ff7f00'></span>Jezebel-Tag</li>
+                <li><span style='background:#ff7f00'></span>Jim-Tag</li>
+                <li><span style='background:#ff7f00'></span>Johnny-Tag</li>
+                <li><span style='background:#ff7f00'></span>Keegan-Tag</li>
+                <li><span style='background:#ff7f00'></span>Lady T-Tag</li>
+                <li><span style='background:#ff7f00'></span>Ladyboyhawke-Tag</li>
+                <li><span style='background:#ff7f00'></span>Lightening Bugg-Tag</li>
+                <li><span style='background:#ff7f00'></span>Lily-Tag</li>
+                <li><span style='background:#ffff33'></span>Lola</li>
+                <li><span style='background:#ffff33'></span>Lucy-Tag</li>
+                <li><span style='background:#ffff33'></span>Macaulay Mccat-Tag</li>
+                <li><span style='background:#ffff33'></span>Maggie-Tag</li>
+                <li><span style='background:#ffff33'></span>Magic-Tag</li>
+                <li><span style='background:#ffff33'></span>Marley-Tag</li>
+                <li><span style='background:#ffff33'></span>Maverick</li>
+                <li><span style='background:#ffff33'></span>Max-Tag</li>
+                <li><span style='background:#ffff33'></span>Maxwell-Tag</li>
+                <li><span style='background:#ffff33'></span>Meg-Tag</li>
+                <li><span style='background:#ffff33'></span>Merlin-Tag</li>
+                <li><span style='background:#a65628'></span>Mifty-Tag</li>
+                <li><span style='background:#a65628'></span>Millie-Tag</li>
+                <li><span style='background:#a65628'></span>Missy-Tag</li>
+                <li><span style='background:#a65628'></span>Morpheus-Tag</li>
+                <li><span style='background:#a65628'></span>Moscow-Tag</li>
+                <li><span style='background:#a65628'></span>Neil-Tag</li>
+                <li><span style='background:#a65628'></span>Nettle-Tag</li>
+                <li><span style='background:#a65628'></span>Neva-Tag</li>
+                <li><span style='background:#a65628'></span>Pants-Tag</li>
+                <li><span style='background:#a65628'></span>Poppet-Tag</li>
+                <li><span style='background:#a65628'></span>Pussy-Tag</li>
+                <li><span style='background:#f781bf'></span>Reggie-Tag</li>
+                <li><span style='background:#f781bf'></span>Roger-Tag</li>
+                <li><span style='background:#f781bf'></span>Rusty-Tag</li>
+                <li><span style='background:#f781bf'></span>Seb-Tag</li>
+                <li><span style='background:#f781bf'></span>Siberia-Tag</li>
+                <li><span style='background:#f781bf'></span>Sid-Tag</li>
+                <li><span style='background:#f781bf'></span>Skye-Tag</li>
+                <li><span style='background:#f781bf'></span>SmokeyLongnose-Tag</li>
+                <li><span style='background:#f781bf'></span>Smudge-Tag</li>
+                <li><span style='background:#f781bf'></span>Smudge_2-Tag</li>
+                <li><span style='background:#f781bf'></span>Sparky-Tag</li>
+                <li><span style='background:#999999'></span>Spike-Tag</li>
+                <li><span style='background:#999999'></span>Spot-Tag</li>
+                <li><span style='background:#999999'></span>Teddy-Tag</li>
+                <li><span style='background:#999999'></span>Tigger-Tag</li>
+                <li><span style='background:#999999'></span>Tilly-Tag</li>
+                <li><span style='background:#999999'></span>Tipsy-Tag</li>
+                <li><span style='background:#999999'></span>Tom-Tag</li>
+                <li><span style='background:#999999'></span>Tommy-Tag</li>
+                <li><span style='background:#999999'></span>Whiskey-Tag</li>
+                <li><span style='background:#999999'></span>Wilfred-Tag</li>
+                <li><span style='background:#999999'></span>Winnie-Tag</li>
+                <li><span style='background:#999999'></span>Worf-Tag</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_fa71d7e34e87c51d2691032353792013" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fa71d7e34e87c51d2691032353792013 = L.map(
+                "map_fa71d7e34e87c51d2691032353792013",
+                {
+                    center: [50.494026000000005, -4.8822795],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_fa71d7e34e87c51d2691032353792013);
+
+            
+
+        
+    
+            var tile_layer_78fe324da51a50921c92f2b041442c0b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_78fe324da51a50921c92f2b041442c0b.addTo(map_fa71d7e34e87c51d2691032353792013);
+        
+    
+            map_fa71d7e34e87c51d2691032353792013.fitBounds(
+                [[50.116745, -5.555945], [50.871307, -4.208614]],
+                {}
+            );
+        
+    
+        function geo_json_90ed71a0804a7b8c0c822b2c1863cf77_styler(feature) {
+            switch(feature.id) {
+                case "0": case "1": case "7": case "15": case "30": case "34": case "52": case "63": case "89": case "94": case "100": 
+                    return {"color": "#377eb8", "fillColor": "#377eb8", "fillOpacity": 0.4, "weight": 3};
+                case "2": case "26": case "38": case "51": case "67": case "68": case "78": case "80": case "82": case "93": case "97": case "99": 
+                    return {"color": "#999999", "fillColor": "#999999", "fillOpacity": 0.4, "weight": 3};
+                case "3": case "14": case "17": case "21": case "40": case "47": case "55": case "58": case "64": case "76": case "81": case "90": 
+                    return {"color": "#e41a1c", "fillColor": "#e41a1c", "fillOpacity": 0.4, "weight": 3};
+                case "4": case "44": case "50": case "66": case "71": case "72": case "73": case "84": case "87": case "92": case "98": 
+                    return {"color": "#f781bf", "fillColor": "#f781bf", "fillOpacity": 0.4, "weight": 3};
+                case "5": case "11": case "19": case "35": case "37": case "42": case "43": case "54": case "59": case "62": case "83": 
+                    return {"color": "#ffff33", "fillColor": "#ffff33", "fillOpacity": 0.4, "weight": 3};
+                case "6": case "23": case "28": case "33": case "39": case "45": case "46": case "56": case "57": case "79": case "95": 
+                    return {"color": "#ff7f00", "fillColor": "#ff7f00", "fillOpacity": 0.4, "weight": 3};
+                case "10": case "12": case "18": case "20": case "24": case "25": case "29": case "41": case "61": case "75": case "91": 
+                    return {"color": "#a65628", "fillColor": "#a65628", "fillOpacity": 0.4, "weight": 3};
+                case "13": case "16": case "31": case "36": case "48": case "49": case "53": case "65": case "69": case "70": case "88": 
+                    return {"color": "#4daf4a", "fillColor": "#4daf4a", "fillOpacity": 0.4, "weight": 3};
+                default:
+                    return {"color": "#984ea3", "fillColor": "#984ea3", "fillOpacity": 0.4, "weight": 3};
+            }
+        }
+        function geo_json_90ed71a0804a7b8c0c822b2c1863cf77_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_90ed71a0804a7b8c0c822b2c1863cf77_pointToLayer(feature, latlng) {
+            var opts = {
+  "stroke": true,
+  "color": "#3388ff",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#3388ff",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 2,
+};
+            
+            let style = geo_json_90ed71a0804a7b8c0c822b2c1863cf77_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_90ed71a0804a7b8c0c822b2c1863cf77_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_90ed71a0804a7b8c0c822b2c1863cf77.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_90ed71a0804a7b8c0c822b2c1863cf77_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_90ed71a0804a7b8c0c822b2c1863cf77 = L.geoJson(null, {
+                onEachFeature: geo_json_90ed71a0804a7b8c0c822b2c1863cf77_onEachFeature,
+            
+                style: geo_json_90ed71a0804a7b8c0c822b2c1863cf77_styler,
+                pointToLayer: geo_json_90ed71a0804a7b8c0c822b2c1863cf77_pointToLayer,
+            ...{
+}
+        });
+
+        function geo_json_90ed71a0804a7b8c0c822b2c1863cf77_add (data) {
+            geo_json_90ed71a0804a7b8c0c822b2c1863cf77
+                .addData(data);
+        }
+            geo_json_90ed71a0804a7b8c0c822b2c1863cf77_add({"bbox": [-5.555945, 50.116745, -4.208614, 50.871307], "features": [{"bbox": [-5.077623, 50.151741, -5.073767, 50.154263], "geometry": {"coordinates": [[[-5.077123, 50.151741], [-5.077623, 50.152344], [-5.077452, 50.153603], [-5.076509, 50.154263], [-5.075158, 50.153259], [-5.073767, 50.152164], [-5.077123, 50.151741]]], "type": "Polygon"}, "id": "0", "properties": {"__folium_color": "#377eb8", "area_m2": 67396.0, "tag-local-identifier": "Charlie"}, "type": "Feature"}, {"bbox": [-5.081153, 50.154785, -5.078852, 50.155937], "geometry": {"coordinates": [[[-5.079836, 50.154785], [-5.080911, 50.154804], [-5.081068, 50.154915], [-5.081153, 50.155937], [-5.080595, 50.15591], [-5.079599, 50.155846], [-5.079541, 50.155834], [-5.079015, 50.155632], [-5.078852, 50.155338], [-5.079047, 50.155056], [-5.079656, 50.154839], [-5.079836, 50.154785]]], "type": "Polygon"}, "id": "1", "properties": {"__folium_color": "#377eb8", "area_m2": 26207.0, "tag-local-identifier": "Carbonel-Tag"}, "type": "Feature"}, {"bbox": [-5.112754, 50.170059, -5.111039, 50.171844], "geometry": {"coordinates": [[[-5.111629, 50.170059], [-5.112605, 50.170254], [-5.11272, 50.170567], [-5.112754, 50.171612], [-5.111991, 50.171844], [-5.111039, 50.17012], [-5.111629, 50.170059]]], "type": "Polygon"}, "id": "2", "properties": {"__folium_color": "#999999", "area_m2": 24076.0, "tag-local-identifier": "Tommy-Tag"}, "type": "Feature"}, {"bbox": [-5.085176, 50.148651, -5.070982, 50.1563], "geometry": {"coordinates": [[[-5.071296, 50.148651], [-5.076035, 50.148979], [-5.083248, 50.152439], [-5.08469, 50.153271], [-5.085176, 50.15358], [-5.084678, 50.156185], [-5.083722, 50.1563], [-5.070982, 50.148952], [-5.071296, 50.148651]]], "type": "Polygon"}, "id": "3", "properties": {"__folium_color": "#e41a1c", "area_m2": 453089.0, "tag-local-identifier": "Bear-Tag"}, "type": "Feature"}, {"bbox": [-5.077797, 50.14904, -5.076098, 50.151897], "geometry": {"coordinates": [[[-5.076098, 50.14904], [-5.077797, 50.150547], [-5.07777, 50.15139], [-5.077641, 50.151897], [-5.076995, 50.151489], [-5.076345, 50.150974], [-5
