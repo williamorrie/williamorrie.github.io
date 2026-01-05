@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2e22749b7d95d35d352a83fd3d506d07 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div id="catSelector" style="position: fixed; 
+            top: 10px; 
+            right: 10px; 
+            width: 250px; 
+            background-color: white; 
+            z-index: 1000;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            font-family: Arial, sans-serif;">
+    <label for="catSelect" style="font-weight: bold; margin-bottom: 5px; display: block;">
+        Select a Cat:
+    </label>
+    <select id="catSelect" onchange="selectCat()" 
+            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px;">
+        <option value="">-- All Cats --</option>
+        <option value="Abba-Tag">Abba-Tag</option><option value="Alfie-Tag">Alfie-Tag</option><option value="Amber-Tag">Amber-Tag</option><option value="Ares">Ares</option><option value="Athena">Athena</option><option value="Balu-Tag">Balu-Tag</option><option value="Barney-Tag">Barney-Tag</option><option value="Beanie-Tag">Beanie-Tag</option><option value="Bear-Tag">Bear-Tag</option><option value="Bella-Tag">Bella-Tag</option><option value="Binky-Tag">Binky-Tag</option><option value="Bits-Tag">Bits-Tag</option><option value="Bobs-Tag">Bobs-Tag</option><option value="Boots-Tag">Boots-Tag</option><option value="Bumbles-Tag">Bumbles-Tag</option><option value="CJ-Tag">CJ-Tag</option><option value="Carbonel-Tag">Carbonel-Tag</option><option value="Carrots-Tag">Carrots-Tag</option><option value="Casper-Tag">Casper-Tag</option><option value="Charlie">Charlie</option><option value="Charlie2-Tag">Charlie2-Tag</option><option value="Charlie3-Tag">Charlie3-Tag</option><option value="Chloe-Tag">Chloe-Tag</option><option value="Coco">Coco</option><option value="Dexter-Tag">Dexter-Tag</option><option value="Dexter2-Tag">Dexter2-Tag</option><option value="Dory-Tag">Dory-Tag</option><option value="Ebby-Tag">Ebby-Tag</option><option value="Ernie-Tag">Ernie-Tag</option><option value="Fairclough-Tag">Fairclough-Tag</option><option value="Felix-Tag">Felix-Tag</option><option value="Flash-Tag">Flash-Tag</option><option value="Fonzie-Tag">Fonzie-Tag</option><option value="Frank-Tag">Frank-Tag</option><option value="Frank_2-Tag">Frank_2-Tag</option><option value="Freya-Tag">Freya-Tag</option><option value="Friday">Friday</option><option value="Ginge-Tag">Ginge-Tag</option><option value="Gracie-Tag">Gracie-Tag</option><option value="Gracie_2-Tag">Gracie_2-Tag</option><option value="Guinness-Tag">Guinness-Tag</option><option value="Henry-Tag">Henry-Tag</option><option value="Indie-Tag">Indie-Tag</option><option value="Jago">Jago</option><option value="Jago2-Tag">Jago2-Tag</option><option value="Jasper-Tag">Jasper-Tag</option><option value="Jessie-Tag">Jessie-Tag</option><option value="Jessy-Tag">Jessy-Tag</option><option value="Jezebel-Tag">Jezebel-Tag</option><option value="Jim-Tag">Jim-Tag</option><option value="Johnny-Tag">Johnny-Tag</option><option value="Keegan-Tag">Keegan-Tag</option><option value="Lady T-Tag">Lady T-Tag</option><option value="Ladyboyhawke-Tag">Ladyboyhawke-Tag</option><option value="Lightening Bugg-Tag">Lightening Bugg-Tag</option><option value="Lily-Tag">Lily-Tag</option><option value="Lola">Lola</option><option value="Lucy-Tag">Lucy-Tag</option><option value="Macaulay Mccat-Tag">Macaulay Mccat-Tag</option><option value="Maggie-Tag">Maggie-Tag</option><option value="Magic-Tag">Magic-Tag</option><option value="Marley-Tag">Marley-Tag</option><option value="Maverick">Maverick</option><option value="Max-Tag">Max-Tag</option><option value="Maxwell-Tag">Maxwell-Tag</option><option value="Meg-Tag">Meg-Tag</option><option value="Merlin-Tag">Merlin-Tag</option><option value="Mifty-Tag">Mifty-Tag</option><option value="Millie-Tag">Millie-Tag</option><option value="Missy-Tag">Missy-Tag</option><option value="Morpheus-Tag">Morpheus-Tag</option><option value="Moscow-Tag">Moscow-Tag</option><option value="Neil-Tag">Neil-Tag</option><option value="Nettle-Tag">Nettle-Tag</option><option value="Neva-Tag">Neva-Tag</option><option value="Pants-Tag">Pants-Tag</option><option value="Poppet-Tag">Poppet-Tag</option><option value="Pussy-Tag">Pussy-Tag</option><option value="Reggie-Tag">Reggie-Tag</option><option value="Roger-Tag">Roger-Tag</option><option value="Rusty-Tag">Rusty-Tag</option><option value="Seb-Tag">Seb-Tag</option><option value="Siberia-Tag">Siberia-Tag</option><option value="Sid-Tag">Sid-Tag</option><option value="Skye-Tag">Skye-Tag</option><option value="SmokeyLongnose-Tag">SmokeyLongnose-Tag</option><option value="Smudge-Tag">Smudge-Tag</option><option value="Smudge_2-Tag">Smudge_2-Tag</option><option value="Sparky-Tag">Sparky-Tag</option><option value="Spike-Tag">Spike-Tag</option><option value="Spot-Tag">Spot-Tag</option><option value="Teddy-Tag">Teddy-Tag</option><option value="Tigger-Tag">Tigger-Tag</option><option value="Tilly-Tag">Tilly-Tag</option><option value="Tipsy-Tag">Tipsy-Tag</option><option value="Tom-Tag">Tom-Tag</option><option value="Tommy-Tag">Tommy-Tag</option><option value="Whiskey-Tag">Whiskey-Tag</option><option value="Wilfred-Tag">Wilfred-Tag</option><option value="Winnie-Tag">Winnie-Tag</option><option value="Worf-Tag">Worf-Tag</option>
+    </select>
+    
+    <div style="margin-bottom: 10px;">
+        <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="checkbox" id="showPolygons" checked onchange="togglePolygons()" 
+                   style="margin-right: 8px;">
+            <span>Show home range polygons</span>
+        </label>
+    </div>
+    
+    <div id="dateRangeContainer" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+        <label style="font-weight: bold; margin-bottom: 5px; display: block; font-size: 13px;">
+            Date Range:
+        </label>
+        <div style="margin-bottom: 8px;">
+            <label style="font-size: 11px; color: #666;">Start:</label>
+            <input type="range" id="dateRangeStart" min="0" max="100" value="0" 
+                   style="width: 100%;" oninput="updateDateRange()">
+            <div id="startDateLabel" style="font-size: 11px; color: #333; margin-top: 2px;"></div>
+        </div>
+        <div style="margin-bottom: 8px;">
+            <label style="font-size: 11px; color: #666;">End:</label>
+            <input type="range" id="dateRangeEnd" min="0" max="100" value="100" 
+                   style="width: 100%;" oninput="updateDateRange()">
+            <div id="endDateLabel" style="font-size: 11px; color: #333; margin-top: 2px;"></div>
+        </div>
+    </div>
+    
+    <div id="statsContainer" style="margin-top: 10px; font-size: 12px; color: #666; padding-top: 10px; border-top: 1px solid #eee;">
+        <strong>101</strong> cats, 
+        <strong id="gpsPointCount">17,866</strong> GPS points
+    </div>
+</div>
+
+<script>
+    var catBounds = {"Ares": [[50.169136, -5.116042], [50.171623, -5.112664]], "Athena": [[50.168354, -5.114899], [50.170673, -5.110911]], "Lola": [[50.142307, -5.075027], [50.147888, -5.069579]], "Jago": [[50.15134, -5.074888], [50.154404, -5.070993]], "Maverick": [[50.143269, -5.083739], [50.148045, -5.072452]], "Charlie": [[50.151741, -5.077623], [50.154263, -5.073767]], "Coco": [[50.151115, -5.077785], [50.153824, -5.073802]], "Friday": [[50.159027, -5.075646], [50.161133, -5.074109]], "Meg-Tag": [[50.169361, -5.114584], [50.171482, -5.112493]], "Morpheus-Tag": [[50.157188, -5.087958], [50.159405, -5.085166]], "Nettle-Tag": [[50.157188, -5.087343], [50.159325, -5.084788]], "Carbonel-Tag": [[50.154785, -5.081153], [50.155937, -5.078852]], "Tommy-Tag": [[50.170059, -5.112754], [50.171844, -5.111039]], "Whiskey-Tag": [[50.151718, -5.142953], [50.154606, -5.138746]], "Sparky-Tag": [[50.328724, -4.212532], [50.331879, -4.208614]], "Indie-Tag": [[50.14592, -5.063594], [50.148815, -5.060971]], "Mifty-Tag": [[50.265209, -5.070995], [50.268101, -5.065014]], "Rusty-Tag": [[50.145931, -5.064406], [50.148079, -5.060288]], "Jessy-Tag": [[50.531647, -4.31001], [50.535564, -4.307572]], "Barney-Tag": [[50.404842, -4.233917], [50.40757, -4.230939]], "Fonzie-Tag": [[50.405071, -4.235575], [50.407585, -4.231306]], "Johnny-Tag": [[50.233574, -5.068148], [50.236275, -5.06437]], "Wilfred-Tag": [[50.207809, -5.124217], [50.209942, -5.117591]], "Henry-Tag": [[50.175018, -5.106709], [50.176174, -5.105659]], "Ladyboyhawke-Tag": [[50.572285, -4.873988], [50.575859, -4.865462]], "Pussy-Tag": [[50.573822, -4.874744], [50.578461, -4.868726]], "Poppet-Tag": [[50.570553, -4.876408], [50.57679, -4.870389]], "Winnie-Tag": [[50.450901, -4.459358], [50.452877, -4.456356]], "Lady T-Tag": [[50.451546, -4.458897], [50.452518, -4.457093]], "Bella-Tag": [[50.435188, -4.604202], [50.438297, -4.598148]], "Tom-Tag": [[50.435307, -4.610664], [50.441086, -4.597013]], "Charlie2-Tag": [[50.366673, -5.050208], [50.368168, -5.048974]], "Max-Tag": [[50.361423, -5.050142], [50.36974, -5.028163]], "Chloe-Tag": [[50.14798, -5.075947], [50.150208, -5.072371]], "Bear-Tag": [[50.148651, -5.085176], [50.1563, -5.070982]], "Bumbles-Tag": [[50.147717, -5.078919], [50.149868, -5.076338]], "Ebby-Tag": [[50.148422, -5.077816], [50.150066, -5.076409]], "Binky-Tag": [[50.149426, -5.078722], [50.152718, -5.073112]], "Beanie-Tag": [[50.150387, -5.077584], [50.151459, -5.076503]], "Sid-Tag": [[50.14904, -5.077797], [50.151897, -5.076098]], "Merlin-Tag": [[50.497711, -4.224978], [50.502098, -4.213715]], "Felix-Tag": [[50.28796, -5.081541], [50.290188, -5.079965]], "Amber-Tag": [[50.338589, -4.639243], [50.341736, -4.633688]], "Ernie-Tag": [[50.3386, -4.63925], [50.340706, -4.63623]], "Maxwell-Tag": [[50.508846, -4.839984], [50.511703, -4.835694]], "Bits-Tag": [[50.50766, -4.922328], [50.509087, -4.919843]], "Bobs-Tag": [[50.506454, -4.924389], [50.509315, -4.919011]], "Lightening Bugg-Tag": [[50.506107, -4.924014], [50.509007, -4.919889]], "Smudge-Tag": [[50.160892, -5.084229], [50.162289, -5.08274]], "Tigger-Tag": [[50.160713, -5.083905], [50.161774, -5.082859]], "Magic-Tag": [[50.161095, -5.083766], [50.16217, -5.082962]], "Skye-Tag": [[50.204948, -5.491375], [50.205883, -5.489737]], "Dory-Tag": [[50.204422, -5.491871], [50.206444, -5.486417]], "Boots-Tag": [[50.140644, -5.495091], [50.145329, -5.483326]], "Jago2-Tag": [[50.143124, -5.49473], [50.146255, -5.487932]], "Jezebel-Tag": [[50.138565, -5.494846], [50.146149, -5.492054]], "Spike-Tag": [[50.136597, -5.49965], [50.14756, -5.490901]], "Frank-Tag": [[50.355961, -4.761307], [50.362694, -4.748197]], "Smudge_2-Tag": [[50.358219, -4.760692], [50.360764, -4.754179]], "Carrots-Tag": [[50.359356, -4.76034], [50.362072, -4.756594]], "Freya-Tag": [[50.201874, -5.283046], [50.204021, -5.280971]], "Spot-Tag": [[50.202339, -5.283921], [50.20396, -5.281218]], "Frank_2-Tag": [[50.116745, -5.538066], [50.122581, -5.533987]], "Flash-Tag": [[50.350471, -5.012929], [50.351128, -5.011022]], "Tipsy-Tag": [[50.34808, -5.014732], [50.351372, -5.010837]], "Gracie-Tag": [[50.151073, -5.066568], [50.152767, -5.06526]], "Guinness-Tag": [[50.426559, -4.946146], [50.429134, -4.943056]], "Marley-Tag": [[50.266632, -5.074815], [50.270657, -5.070114]], "Teddy-Tag": [[50.327034, -4.770774], [50.329906, -4.766707]], "Jessie-Tag": [[50.21352, -5.280231], [50.21476, -5.27869]], "Tilly-Tag": [[50.219593, -5.301344], [50.222927, -5.295223]], "Gracie_2-Tag": [[50.207909, -5.295241], [50.212379, -5.291698]], "Reggie-Tag": [[50.208916, -5.294331], [50.210583, -5.28944]], "Dexter-Tag": [[50.218628, -5.293386], [50.225399, -5.289307]], "Roger-Tag": [[50.152245, -5.092421], [50.154076, -5.089789]], "Missy-Tag": [[50.33144, -4.796594], [50.334774, -4.793554]], "Balu-Tag": [[50.495247, -4.378963], [50.498547, -4.375787]], "Abba-Tag": [[50.162762, -5.205609], [50.164215, -5.203375]], "Worf-Tag": [[50.159328, -5.207258], [50.163979, -5.200306]], "Dexter2-Tag": [[50.469383, -4.982018], [50.48315, -4.958859]], "Fairclough-Tag": [[50.11974, -5.176124], [50.120663, -5.174675]], "Keegan-Tag": [[50.117481, -5.177135], [50.121128, -5.170918]], "Lucy-Tag": [[50.2141, -5.275492], [50.21574, -5.2739]], "Jim-Tag": [[50.15134, -5.071528], [50.153847, -5.069197]], "Pants-Tag": [[50.151733, -5.070836], [50.153278, -5.069497]], "Lily-Tag": [[50.337986, -4.651473], [50.338993, -4.650367]], "Maggie-Tag": [[50.337582, -4.6522], [50.339142, -4.649659]], "Neil-Tag": [[50.126637, -5.537981], [50.12904, -5.535323]], "Macaulay Mccat-Tag": [[50.233841, -5.191893], [50.236107, -5.189654]], "Siberia-Tag": [[50.117569, -5.143773], [50.119511, -5.141338]], "Moscow-Tag": [[50.161469, -5.080264], [50.162403, -5.07861]], "Neva-Tag": [[50.161812, -5.080487], [50.162544, -5.079225]], "Alfie-Tag": [[50.341965, -4.763076], [50.346031, -4.750526]], "Casper-Tag": [[50.18475, -5.409436], [50.186913, -5.406601]], "Ginge-Tag": [[50.263962, -5.157402], [50.268536, -5.151149]], "Jasper-Tag": [[50.528591, -4.450761], [50.530956, -4.443991]], "SmokeyLongnose-Tag": [[50.123615, -5.555945], [50.12566, -5.553336]], "CJ-Tag": [[50.232773, -5.221145], [50.237926, -5.209996]], "Seb-Tag": [[50.235046, -5.219672], [50.237324, -5.217572]], "Charlie3-Tag": [[50.869038, -4.522836], [50.871307, -4.519641]], "Millie-Tag": [[50.867867, -4.523784], [50.870632, -4.519911]]};
+    var catCentroids = {"Ares": [50.170379499999996, -5.1143529999999995], "Athena": [50.1695135, -5.112905], "Lola": [50.145097500000006, -5.072303], "Jago": [50.152872, -5.0729405], "Maverick": [50.145657, -5.0780955], "Charlie": [50.153002, -5.075695], "Coco": [50.152469499999995, -5.0757935], "Friday": [50.16008, -5.0748774999999995], "Meg-Tag": [50.1704215, -5.1135385], "Morpheus-Tag": [50.1582965, -5.086562000000001], "Nettle-Tag": [50.1582565, -5.0860655], "Carbonel-Tag": [50.155361, -5.0800025], "Tommy-Tag": [50.1709515, -5.1118965], "Whiskey-Tag": [50.153162, -5.1408495], "Sparky-Tag": [50.330301500000004, -4.210573], "Indie-Tag": [50.1473675, -5.0622825], "Mifty-Tag": [50.266655, -5.0680045], "Rusty-Tag": [50.147005, -5.062347], "Jessy-Tag": [50.5336055, -4.308791], "Barney-Tag": [50.406206, -4.2324280000000005], "Fonzie-Tag": [50.406328, -4.2334405], "Johnny-Tag": [50.2349245, -5.0662590000000005], "Wilfred-Tag": [50.2088755, -5.1209039999999995], "Henry-Tag": [50.175596, -5.106184000000001], "Ladyboyhawke-Tag": [50.574072, -4.869725], "Pussy-Tag": [50.5761415, -4.871734999999999], "Poppet-Tag": [50.5736715, -4.8733985], "Winnie-Tag": [50.451889, -4.457857000000001], "Lady T-Tag": [50.452032, -4.457995], "Bella-Tag": [50.436742499999994, -4.601175], "Tom-Tag": [50.438196500000004, -4.6038385], "Charlie2-Tag": [50.367420499999994, -5.0495909999999995], "Max-Tag": [50.365581500000005, -5.0391525], "Chloe-Tag": [50.149094, -5.074159], "Bear-Tag": [50.1524755, -5.078079], "Bumbles-Tag": [50.1487925, -5.077628499999999], "Ebby-Tag": [50.149243999999996, -5.0771125], "Binky-Tag": [50.151072, -5.0759170000000005], "Beanie-Tag": [50.150923000000006, -5.0770435], "Sid-Tag": [50.1504685, -5.0769475], "Merlin-Tag": [50.4999045, -4.2193465], "Felix-Tag": [50.289074, -5.080753], "Amber-Tag": [50.3401625, -4.6364655], "Ernie-Tag": [50.339653, -4.63774], "Maxwell-Tag": [50.510274499999994, -4.837839000000001], "Bits-Tag": [50.508373500000005, -4.9210855], "Bobs-Tag": [50.5078845, -4.9216999999999995], "Lightening Bugg-Tag": [50.507557, -4.9219515000000005], "Smudge-Tag": [50.1615905, -5.0834845], "Tigger-Tag": [50.1612435, -5.083382], "Magic-Tag": [50.1616325, -5.0833639999999995], "Skye-Tag": [50.2054155, -5.490556], "Dory-Tag": [50.205433, -5.489144], "Boots-Tag": [50.1429865, -5.4892085], "Jago2-Tag": [50.1446895, -5.491331], "Jezebel-Tag": [50.142357000000004, -5.49345], "Spike-Tag": [50.1420785, -5.4952755], "Frank-Tag": [50.3593275, -4.754752], "Smudge_2-Tag": [50.359491500000004, -4.7574355], "Carrots-Tag": [50.360714, -4.758467], "Freya-Tag": [50.20294749999999, -5.2820085], "Spot-Tag": [50.2031495, -5.2825695], "Frank_2-Tag": [50.119663, -5.5360265], "Flash-Tag": [50.3507995, -5.0119755], "Tipsy-Tag": [50.349726000000004, -5.0127845], "Gracie-Tag": [50.15192, -5.065914], "Guinness-Tag": [50.4278465, -4.9446010000000005], "Marley-Tag": [50.2686445, -5.072464500000001], "Teddy-Tag": [50.328469999999996, -4.7687405], "Jessie-Tag": [50.21414, -5.2794605], "Tilly-Tag": [50.22126, -5.2982835], "Gracie_2-Tag": [50.210144, -5.2934695000000005], "Reggie-Tag": [50.2097495, -5.291885499999999], "Dexter-Tag": [50.2220135, -5.2913464999999995], "Roger-Tag": [50.1531605, -5.091105], "Missy-Tag": [50.333107, -4.795074], "Balu-Tag": [50.496897000000004, -4.377375], "Abba-Tag": [50.1634885, -5.204492], "Worf-Tag": [50.1616535, -5.203782], "Dexter2-Tag": [50.4762665, -4.9704385], "Fairclough-Tag": [50.1202015, -5.175399499999999], "Keegan-Tag": [50.1193045, -5.1740265], "Lucy-Tag": [50.21492, -5.2746960000000005], "Jim-Tag": [50.152593499999995, -5.0703625], "Pants-Tag": [50.152505500000004, -5.0701665], "Lily-Tag": [50.3384895, -4.65092], "Maggie-Tag": [50.338362000000004, -4.6509295], "Neil-Tag": [50.1278385, -5.536652], "Macaulay Mccat-Tag": [50.234973999999994, -5.190773500000001], "Siberia-Tag": [50.11854, -5.1425555], "Moscow-Tag": [50.161936, -5.079437], "Neva-Tag": [50.162178, -5.0798559999999995], "Alfie-Tag": [50.343998, -4.756800999999999], "Casper-Tag": [50.1858315, -5.408018500000001], "Ginge-Tag": [50.266249, -5.154275500000001], "Jasper-Tag": [50.529773500000005, -4.447376], "SmokeyLongnose-Tag": [50.124637500000006, -5.5546405], "CJ-Tag": [50.2353495, -5.2155705], "Seb-Tag": [50.236185, -5.218622], "Charlie3-Tag": [50.8701725, -4.5212385], "Millie-Tag": [50.869249499999995, -4.5218475]};
+    var overallBounds = [[50.116745, -5.555945], [50.871307, -4.208614]];
+    var catData = null;
+    var polygonsLayer = null;
+    var markersLayer = null;
+    var currentCatLayer = null;
+    var map = null;
+    var ZOOM_THRESHOLD = 12;  // Below this zoom level, show markers instead of polygons
+    var currentCatData = null;  // Store current cat's full data for date filtering
+    var currentCatId = null;  // Store current cat ID
+    var allDatesForCat = [];  // Store all dates for the current cat
+    
+    // Color palette for days
+    var colors = ['red', 'blue', 'green', 'purple', 'orange', 'darkred', 
+                  'brown', 'beige', 'darkblue', 'darkgreen', 'cadetblue', 
+                  'darkpurple', 'pink', 'lightblue', 'lightgreen', 'gray', 
+                  'black', 'lightgray'];
+    
+    // Wait for map to be fully initialized and find it
+    function initMapData() {
+        // Find the map object - folium creates it as a global variable
+        for (var key in window) {
+            if (key.startsWith('map_') && window[key] instanceof L.Map) {
+                map = window[key];
+                break;
+            }
+        }
+        
+        if (!map) {
+            console.error('Map not found, retrying...');
+            setTimeout(initMapData, 100);
+            return;
+        }
+        
+        console.log('Map found, loading data...');
+        
+        // Fit map to show all cats
+        if (overallBounds) {
+            map.fitBounds(overallBounds, {padding: [50, 50]});
+        }
+        
+        // Add zoom listener to toggle between markers and polygons
+        map.on('zoomend', updateLayerDisplay);
+        
+        // Load all data files
+        Promise.all([
+            fetch('data/cat_polygons.geojson').then(r => r.json()),
+            fetch('data/cat_gps_data.json').then(r => r.json())
+        ]).then(([polygons, gpsData]) => {
+            catData = gpsData;
+            
+            // Add polygons layer
+            polygonsLayer = L.geoJSON(polygons, {
+                style: function(feature) {
+                    return {
+                        fillColor: 'blue',
+                        color: 'blue',
+                        weight: 2,
+                        fillOpacity: 0.3
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    var props = feature.properties;
+                    layer.bindTooltip(props['tag-local-identifier'] + '<br>Area: ' + props.area_m2 + ' m²');
+                    layer.on('click', function() {
+                        document.getElementById('catSelect').value = props['tag-local-identifier'];
+                        selectCat();
+                    });
+                }
+            });
+            
+            // Create markers layer for low zoom levels
+            markersLayer = L.layerGroup();
+            for (var catId in catCentroids) {
+                var centroid = catCentroids[catId];
+                var area = gpsData[catId].area_m2;
+                L.marker(centroid, {
+                    icon: L.divIcon({
+                        className: 'cat-marker',
+                        html: '<div style="background-color: rgba(0, 0, 255, 0.6); color: white; padding: 5px; border-radius: 10px; font-weight: bold; white-space: nowrap; font-size: 11px;">' + catId + '</div>',
+                        iconSize: [null, null]
+                    })
+                }).bindTooltip(catId + '<br>Area: ' + area + ' m²')
+                  .on('click', function(e) {
+                      var marker = e.target;
+                      var clickedCat = marker.getTooltip().getContent().split('<br>')[0];
+                      document.getElementById('catSelect').value = clickedCat;
+                      selectCat();
+                  })
+                  .addTo(markersLayer);
+            }
+            
+            // Show appropriate layer based on initial zoom
+            updateLayerDisplay();
+            
+            console.log('Data loaded successfully');
+        }).catch(err => {
+            console.error('Error loading data:', err);
+        });
+    }
+    
+    function updateLayerDisplay() {
+        if (!map || !polygonsLayer || !markersLayer) return;
+        
+        var checkbox = document.getElementById('showPolygons');
+        if (!checkbox.checked) {
+            map.removeLayer(polygonsLayer);
+            map.removeLayer(markersLayer);
+            return;
+        }
+        
+        var currentZoom = map.getZoom();
+        
+        if (currentZoom < ZOOM_THRESHOLD) {
+            // Low zoom - show markers
+            if (map.hasLayer(polygonsLayer)) {
+                map.removeLayer(polygonsLayer);
+            }
+            if (!map.hasLayer(markersLayer)) {
+                map.addLayer(markersLayer);
+            }
+        } else {
+            // High zoom - show polygons
+            if (map.hasLayer(markersLayer)) {
+                map.removeLayer(markersLayer);
+            }
+            if (!map.hasLayer(polygonsLayer)) {
+                map.addLayer(polygonsLayer);
+            }
+        }
+    }
+    
+    // Start initialization after page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMapData);
+    } else {
+        setTimeout(initMapData, 100);
+    }
+    
+    function getColorForDate(dateStr, allDates) {
+        var idx = allDates.indexOf(dateStr);
+        return colors[idx % colors.length];
+    }
+    
+    function selectCat() {
+        var select = document.getElementById('catSelect');
+        var selectedCat = select.value;
+        
+        // Remove current cat layer if exists
+        if (currentCatLayer) {
+            map.removeLayer(currentCatLayer);
+            currentCatLayer = null;
+        }
+        
+        if (selectedCat === '') {
+            // Reset to show all cats view
+            currentCatData = null;
+            currentCatId = null;
+            allDatesForCat = [];
+            document.getElementById('dateRangeContainer').style.display = 'none';
+            document.getElementById('gpsPointCount').textContent = '17,866';
+            if (overallBounds) {
+                map.fitBounds(overallBounds, {padding: [50, 50]});
+            } else {
+                map.setView([50.29649675551327, -4.98773081042203], 13);
+            }
+        } else {
+            // Show selected cat
+            currentCatId = selectedCat;
+            var data = catData[selectedCat];
+            if (!data) return;
+            
+            // Store current cat data
+            currentCatData = data;
+            
+            // Extract unique dates from GeoJSON features
+            var datesSet = new Set();
+            data.geojson.features.forEach(function(feature) {
+                datesSet.add(feature.properties.date);
+            });
+            allDatesForCat = Array.from(datesSet).sort();
+            
+            // Setup date range slider
+            if (allDatesForCat.length > 1) {
+                document.getElementById('dateRangeContainer').style.display = 'block';
+                var startSlider = document.getElementById('dateRangeStart');
+                var endSlider = document.getElementById('dateRangeEnd');
+                startSlider.max = allDatesForCat.length - 1;
+                endSlider.max = allDatesForCat.length - 1;
+                startSlider.value = 0;
+                endSlider.value = allDatesForCat.length - 1;
+                document.getElementById('startDateLabel').textContent = allDatesForCat[0];
+                document.getElementById('endDateLabel').textContent = allDatesForCat[allDatesForCat.length - 1];
+            } else {
+                document.getElementById('dateRangeContainer').style.display = 'none';
+            }
+            
+            // Display the data
+            displayCatData();
+            
+            // Zoom to selected cat
+            var bounds = catBounds[selectedCat];
+            if (bounds) {
+                map.fitBounds(bounds, {padding: [50, 50]});
+            }
+        }
+    }
+    
+    function togglePolygons() {
+        updateLayerDisplay();
+    }
+    
+    function displayCatData() {
+        if (!currentCatData || !currentCatId) return;
+        
+        // Remove current cat layer if exists
+        if (currentCatLayer) {
+            map.removeLayer(currentCatLayer);
+        }
+        
+        currentCatLayer = L.layerGroup();
+        
+        // Get date range from sliders
+        var startIdx = parseInt(document.getElementById('dateRangeStart').value) || 0;
+        var endIdx = parseInt(document.getElementById('dateRangeEnd').value) || (allDatesForCat.length - 1);
+        
+        // Ensure start <= end
+        if (startIdx > endIdx) {
+            var temp = startIdx;
+            startIdx = endIdx;
+            endIdx = temp;
+        }
+        
+        var selectedDates = allDatesForCat.slice(startIdx, endIdx + 1);
+        
+        // Organize points by date from GeoJSON features
+        var pointsByDate = {};
+        currentCatData.geojson.features.forEach(function(feature) {
+            var date = feature.properties.date;
+            if (selectedDates.indexOf(date) !== -1) {
+                if (!pointsByDate[date]) {
+                    pointsByDate[date] = [];
+                }
+                var coords = feature.geometry.coordinates;
+                pointsByDate[date].push({
+                    lat: coords[1],
+                    lng: coords[0],
+                    timestamp: feature.properties.timestamp
+                });
+            }
+        });
+        
+        var filteredDates = Object.keys(pointsByDate).sort();
+        
+        // Count total GPS points being displayed
+        var totalPoints = 0;
+        filteredDates.forEach(function(date) {
+            totalPoints += pointsByDate[date].length;
+        });
+        
+        // Update GPS point count display
+        document.getElementById('gpsPointCount').textContent = totalPoints.toLocaleString();
+        
+        // Add routes with arrows for each day
+        filteredDates.forEach(function(date) {
+            var points = pointsByDate[date];
+            var dayColor = getColorForDate(date, allDatesForCat);
+            
+            // Create polyline for the route
+            var coords = points.map(p => [p.lat, p.lng]);
+            if (coords.length > 1) {
+                L.polyline(coords, {
+                    color: dayColor,
+                    weight: 2,
+                    opacity: 0.7
+                }).bindTooltip(currentCatId + ' - ' + date)
+                  .addTo(currentCatLayer);
+                
+                // Add arrows to show direction
+                L.polylineDecorator(coords, {
+                    patterns: [{
+                        offset: '10%',
+                        repeat: 50,
+                        symbol: L.Symbol.arrowHead({
+                            pixelSize: 10,
+                            polygon: false,
+                            pathOptions: {
+                                stroke: true,
+                                weight: 2,
+                                color: dayColor
+                            }
+                        })
+                    }]
+                }).addTo(currentCatLayer);
+            }
+            
+            // Add GPS points
+            points.forEach(function(point) {
+                L.circleMarker([point.lat, point.lng], {
+                    radius: 3,
+                    color: dayColor,
+                    fillColor: dayColor,
+                    fillOpacity: 0.7,
+                    weight: 1
+                }).bindPopup(currentCatId + '<br>' + point.timestamp + '<br>' + date)
+                  .bindTooltip(currentCatId)
+                  .addTo(currentCatLayer);
+            });
+        });
+        
+        currentCatLayer.addTo(map);
+    }
+    
+    function updateDateRange() {
+        var startSlider = document.getElementById('dateRangeStart');
+        var endSlider = document.getElementById('dateRangeEnd');
+        var startIdx = parseInt(startSlider.value);
+        var endIdx = parseInt(endSlider.value);
+        
+        // Update labels
+        document.getElementById('startDateLabel').textContent = allDatesForCat[startIdx];
+        document.getElementById('endDateLabel').textContent = allDatesForCat[endIdx];
+        
+        // Redraw the cat data with new date range
+        displayCatData();
+    }
+</script>
+
+<!-- Load Leaflet PolylineDecorator for arrows -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.css" />
+<script src="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.js"></script>
+    
+            <div class="folium-map" id="map_2e22749b7d95d35d352a83fd3d506d07" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2e22749b7d95d35d352a83fd3d506d07 = L.map(
+                "map_2e22749b7d95d35d352a83fd3d506d07",
+                {
+                    center: [50.29649675551327, -4.98773081042203],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_190252096f09cc465468a90029770d4b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_190252096f09cc465468a90029770d4b.addTo(map_2e22749b7d95d35d352a83fd3d506d07);
+        
+</script>
+</html>
