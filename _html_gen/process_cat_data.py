@@ -8,11 +8,7 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 import json
-from pathlib import Path
-
-script_dir = Path(__file__).resolve().parent
-app_data_dir = script_dir.parent / "data"
-hid_data_dir = script_dir.parent / "_data"
+from config import app_data_dir, hid_data_dir
 
 print("Loading GPS data...")
 df = pd.read_csv(hid_data_dir / 'UK-pet-cats.csv')
