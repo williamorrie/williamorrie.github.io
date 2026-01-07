@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "duckdb>=1.4.3",
     "folium>=0.20.0",
     "geopandas>=1.1.2",
+    "marimo>=0.18.4",
     "shapely>=2.1.2",
+    "sqlglot>=28.5.0",
 ]
