@@ -11,14 +11,14 @@ View the [Cat Movement Arrows Map](https://williamorrie.github.io/cat_arrows.htm
 
 ### Process
 1. Downloaded cat GPS tracking data from [Movebank](https://www.movebank.org){:target="_blank"} (UK pet cats dataset)
-2. Initial data exploration in [`_marimo/first-cats.py`](_marimo/first-cats.py){:target="_blank"} using DuckDB's spatial extension for:
+2. Initial data exploration in [`_marimo/first-cats.py`](https://github.com/williamorrie/williamorrie.github.io/blob/master/_marimo/first-cats.py){:target="_blank"} using DuckDB's spatial extension for:
    - Loading and querying CSV data with SQL
    - Creating convex hull polygons for each cat's territory
    - Calculating spherical areas with `ST_Area_Spheroid`
    - Converting between coordinate systems (EPSG:4326 ↔ EPSG:3857)
 3. Used Folium to create initial map visualization
 4. Initially exported maps with `map.save('page.html')` to share online
-5. Progressed to automated HTML generation using scripts in [`_html_gen/`](_html_gen/){:target="_blank"}:
+5. Progressed to automated HTML generation using scripts in [`_html_gen/`](https://github.com/williamorrie/williamorrie.github.io/tree/master/_html_gen){:target="_blank"}:
    - `process_cat_data.py` - Pre-processes GPS data and generates GeoJSON files
    - `cat_arrows.py` - Creates interactive HTML with dynamic data loading
 6. Added directional arrows and date range filtering for movement analysis
