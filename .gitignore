@@ -16,3 +16,6 @@ __marimo__/
 _site/
 .jekyll-cache/
 .jekyll-metadata
+
+# Data files
+_data/
