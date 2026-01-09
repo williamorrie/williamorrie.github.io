@@ -37,3 +37,7 @@ View the [Cat Movement Arrows Map](https://williamorrie.github.io/cat_arrows.htm
 
 ### Results
 Successfully created an interactive visualization showing cat movement patterns and territories. The DuckDB approach made spatial queries more intuitive for SQL users, and Marimo's reactive design improved the exploration workflow. Automated scripts make it easy to regenerate the visualization when data updates.
+
+
+#### Data Source
+[Original data](<https://datarepository.movebank.org/entities/datapackage/4ef43458-a0c0-4ff0-aed4-64b07cedf11c)>) from [movebank.org](https://www.movebank.org/cms/movebank-main) published under Creative Commons 
