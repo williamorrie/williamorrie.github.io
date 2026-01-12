@@ -12,3 +12,8 @@ dependencies = [
     "shapely>=2.1.2",
     "sqlglot>=28.5.0",
 ]
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint.isort]
+known-first-party = ["your_package_name"]
