@@ -10,7 +10,7 @@ input_folder = obsidian_vault / "2021-08-29_All_Evernote"
 output_folder = obsidian_vault / "_digests"
 
 # Target Date Selection (Yesterday)
-check_dt = datetime.now() - timedelta(days=3)
+check_dt = datetime.now() - timedelta(days=1)
 # ---------------------
 
 # 1. Prepare Date Strings and Time Windows
