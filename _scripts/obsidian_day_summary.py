@@ -10,7 +10,7 @@ input_folder = obsidian_vault / "2021-08-29_All_Evernote"
 output_folder = obsidian_vault / "_digests"
 
 # Target Date Selection (Yesterday)
-check_dt = datetime.now() - timedelta(days=1)
+check_dt = datetime.now() - timedelta(days=2)
 # ---------------------
 
 # 1. Prepare Date Strings and Time Windows
@@ -25,8 +25,8 @@ all_notes = []
 
 # 2. Regex to find the Obsidian header format
 pattern = re.compile(
-    rf"(#### {target_date_str}, [A-Za-z]+, (\d{{2}}:\d{{2}})[^\n]*)\n(.*?)(?=#### |\Z)",
-    re.DOTALL | re.IGNORECASE,
+    rf"(#### {target_date_str}, [A-Za-z]+, (\d{{2}}:\d{{2}})[^\n]*)\n(.*?)(?=^#### |\Z)",
+    re.DOTALL | re.IGNORECASE | re.MULTILINE,
 )
 
 output_folder.mkdir(parents=True, exist_ok=True)
